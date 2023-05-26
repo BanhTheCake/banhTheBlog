@@ -1,15 +1,15 @@
 import cn from '@/lib/Utils/cn';
 import RootLayout from '@/layouts/RootLayout';
-import HomePageContent from '@/components/home/HomePageContent';
 import { GetServerSideProps } from 'next';
 import { QueryClient, dehydrate } from 'react-query';
 import { useGetPostsQuery } from '@/generated';
 import { graphQLClient } from '@/config/graphqlClient';
 import { ReactElement } from 'react';
+import Home from '@/components_v2/home';
 
 export const LIMIT = 7;
 
-export default function Home() {
+export default function HomePage() {
     return (
         <>
             <div className={cn('w-full flex flex-col space-y-4')}>
@@ -27,13 +27,13 @@ export default function Home() {
                         resources.
                     </p>
                 </div>
-                <HomePageContent />
+                <Home.Content />
             </div>
         </>
     );
 }
 
-Home.getLayout = function getLayout(page: ReactElement) {
+HomePage.getLayout = function getLayout(page: ReactElement) {
     return <RootLayout>{page}</RootLayout>;
 };
 

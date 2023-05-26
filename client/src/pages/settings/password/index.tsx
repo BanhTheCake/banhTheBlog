@@ -1,6 +1,6 @@
 import SettingsLayout from '@/layouts/SettingsLayout';
 import React from 'react';
-import Password from '@/components/Settings/Password';
+import Password from '@/components_v2/setting/Password';
 
 const PasswordPage = () => {
     return (

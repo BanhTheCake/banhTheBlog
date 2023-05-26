@@ -1,4 +1,4 @@
-import Button from '@/components/global/Button';
+import Button from '@/components_v2/global/Button';
 import { graphQLClient } from '@/config/graphqlClient';
 import { useActiveAccountMutation } from '@/generated';
 import Image from 'next/image';

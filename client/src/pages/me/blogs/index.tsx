@@ -2,7 +2,7 @@ import RootLayout from '@/layouts/RootLayout';
 import { useDataUser } from '@/lib/States/user.state';
 import { GetServerSideProps } from 'next';
 import { ReactElement, useEffect, useMemo } from 'react';
-import Author from '@/components/Author';
+import Author from '@/components_v2/author';
 import { useAuthState } from '@/lib/States/Auth.state';
 import { useRouter } from 'next/router';
 

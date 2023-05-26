@@ -1,4 +1,3 @@
-import Button from '@/components/global/Button';
 import { graphQLClient } from '@/config/graphqlClient';
 import {
     useAllCategoriesQuery,
@@ -12,10 +11,10 @@ import { useRouter } from 'next/router';
 import { ReactElement, useMemo } from 'react';
 import { QueryClient, dehydrate } from 'react-query';
 import { LIMIT } from '..';
-import Content from '@/components/categories/Content';
-import InputSearch from '@/components/categories/InputSearch';
+import Button from '@/components_v2/global/Button';
+import Category from '@/components_v2/category';
 
-const Categories = () => {
+const CategoryPage = () => {
     const router = useRouter();
     // name: name of category
     const name = router.query?.name || 'all';
@@ -81,13 +80,13 @@ const Categories = () => {
                     </div>
                 </div>
             )}
-            <InputSearch />
-            <Content />
+            <Category.InputSearch />
+            <Category.Contents />
         </div>
     );
 };
 
-Categories.getLayout = (page: ReactElement) => {
+CategoryPage.getLayout = (page: ReactElement) => {
     return <RootLayout>{page}</RootLayout>;
 };
 
@@ -143,4 +142,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
 };
 
-export default Categories;
+export default CategoryPage;

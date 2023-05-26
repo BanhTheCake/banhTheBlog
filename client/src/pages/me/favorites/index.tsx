@@ -1,7 +1,7 @@
-import OptionsHandlePost from '@/components/blogs/OptionsHandlePost';
-import ContentItem from '@/components/categories/ContentItem';
-import Button from '@/components/global/Button';
-import Pagination from '@/components/global/Pagination';
+import OptionsHandlePost from '@/components_v2/blog/OptionsHandle';
+import Button from '@/components_v2/global/Button';
+import CardHorizontal from '@/components_v2/global/CardHorizontal';
+import Pagination from '@/components_v2/global/Pagination';
 import { useGetFavoritesPostsQuery } from '@/generated';
 import RootLayout from '@/layouts/RootLayout';
 import usePrivateGraphClient from '@/lib/Hooks/usePrivateGraphClient';
@@ -49,7 +49,7 @@ const FavoritesBlogs = () => {
                     </h2>
                     {posts?.[0] ? (
                         <>
-                            <ContentItem
+                            <CardHorizontal
                                 data={posts[0]}
                                 className="border-none "
                             >
@@ -63,7 +63,7 @@ const FavoritesBlogs = () => {
                                         </Button>
                                     </OptionsHandlePost>
                                 ) : undefined}
-                            </ContentItem>
+                            </CardHorizontal>
                         </>
                     ) : (
                         <p className="p-4 py-6 text-center text-xl font-medium text-black/70">
@@ -76,7 +76,7 @@ const FavoritesBlogs = () => {
                     posts.slice(1).map((item) => {
                         const isOwner = user?._id && user._id === item.user._id;
                         return (
-                            <ContentItem
+                            <CardHorizontal
                                 key={item._id}
                                 data={item}
                                 className="bg-white shadow-sm"
@@ -91,7 +91,7 @@ const FavoritesBlogs = () => {
                                         </Button>
                                     </OptionsHandlePost>
                                 ) : undefined}
-                            </ContentItem>
+                            </CardHorizontal>
                         );
                     })}
                 {totalPage && (

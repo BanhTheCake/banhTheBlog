@@ -1,4 +1,4 @@
-import HandleBlog from '@/components/blogs/HandleBlog';
+import HandleBlog from '@/components_v2/blog/Handle';
 import {
     useGetPostBySlugToUpdateQuery,
     useUpdatePostMutation,
@@ -16,9 +16,9 @@ import pickBy from 'lodash.pickby';
 import slugify from '@/lib/Utils/slugify';
 import { toast } from 'react-hot-toast';
 import { useQueryClient } from 'react-query';
-import DeleteBtnWrapper from '@/components/global/DeleteBtnWrapper';
-import Button from '@/components/global/Button';
 import { graphQLClient } from '@/config/graphqlClient';
+import Button from '@/components_v2/global/Button';
+import DeleteBtnWrapper from '@/components_v2/global/DeleteBtnWrapper';
 
 const UpdatePost = () => {
     const router = useRouter();

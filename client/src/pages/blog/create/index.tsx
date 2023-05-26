@@ -1,10 +1,10 @@
 import RootLayout from '@/layouts/RootLayout';
 import { ReactElement, useState } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
-import CreateBlog from '@/components/blogs/CreateBlog';
-import Button from '@/components/global/Button';
+import CreateBlog from '@/components_v2/blog/Create';
 import cn from '@/lib/Utils/cn';
-import CreateCategories from '@/components/blogs/CreateCategories';
+import Button from '@/components_v2/global/Button';
+import Category from '@/components_v2/category';
 
 enum TYPE {
     blog = 'blog',
@@ -46,7 +46,7 @@ export default function Home() {
                 <CreateBlog />
             </Tabs.Content>
             <Tabs.Content value={TYPE.categories}>
-                <CreateCategories />
+                <Category.Create />
             </Tabs.Content>
         </Tabs.Root>
     );

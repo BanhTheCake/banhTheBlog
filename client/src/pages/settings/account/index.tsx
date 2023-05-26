@@ -1,7 +1,7 @@
 import RootLayout from '@/layouts/RootLayout';
 import SettingsLayout from '@/layouts/SettingsLayout';
 import React from 'react';
-import Account from '@/components/Settings/Account';
+import Account from '@/components_v2/setting/Account';
 
 const AccountPage = () => {
     return (

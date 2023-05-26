@@ -1,10 +1,10 @@
-import Navbar from '@/components/Navbar/Navbar';
 import { FC } from 'react';
 import { Poppins } from 'next/font/google';
 import cn from '@/lib/Utils/cn';
-import Footer from '@/components/Footer/Footer';
+import Footer from '@/components_v2/footer';
 import { cva, type VariantProps } from 'class-variance-authority';
 import SocketProvider from '@/lib/Context/SocketContext';
+import Navbar from '@/components_v2/navbar';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -35,7 +35,7 @@ interface RootLayoutProps extends VariantProps<typeof RootLayoutProps> {
 const RootLayout: FC<RootLayoutProps> = ({ children, variant, className }) => {
     return (
         <div className={cn('w-full min-h-screen flex flex-col')}>
-            <Navbar />
+            <Navbar.Main />
             <div className="h-16" />
             <div
                 className={cn(
@@ -48,7 +48,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children, variant, className }) => {
             >
                 <SocketProvider>{children}</SocketProvider>
             </div>
-            <Footer />
+            <Footer.Main />
         </div>
     );
 };

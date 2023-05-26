@@ -8,11 +8,11 @@ import {
     QueryCache,
 } from 'react-query';
 import NextNProcess from 'nextjs-progressbar';
-import CustomToaster from '@/components/global/CustomToast';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import { HistoryProvider } from '@/lib/Context/History';
+import CustomToaster from '@/components_v2/global/CustomToast';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;

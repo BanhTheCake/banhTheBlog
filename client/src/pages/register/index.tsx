@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { DiAtom } from 'react-icons/di';
 import Link from 'next/link';
-import FormRegister from '@/components/register/FormRegister';
 import { useRouter } from 'next/router';
+import Register from '@/components_v2/register';
 
 const RegisterPage = ({}) => {
     const router = useRouter();
@@ -39,7 +39,7 @@ const RegisterPage = ({}) => {
                     </p>
                 </div>
                 <div className="flex-1 flex flex-col justify-center items-center pt-12">
-                    <FormRegister />
+                    <Register.Form />
                 </div>
                 <p className="text-white/60 text-[12px] max-w-[700px] mx-auto">
                     By creating an account, you agree to the{' '}

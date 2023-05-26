@@ -1,5 +1,3 @@
-import Button from '@/components/global/Button';
-import Input from '@/components/global/Input';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
@@ -12,6 +10,8 @@ import { useChangePasswordMutation } from '@/generated';
 import { graphQLClient } from '@/config/graphqlClient';
 import isGraphQLError from '@/lib/Guards/isGraphqlError';
 import { toast } from 'react-hot-toast';
+import Input from '@/components_v2/global/Input';
+import Button from '@/components_v2/global/Button';
 
 const ForgotPage = () => {
     const router = useRouter();

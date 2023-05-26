@@ -3,7 +3,7 @@ import { LIMIT } from '@/pages';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { ReactElement, useMemo } from 'react';
-import Author from '@/components/Author';
+import Author from '@/components_v2/author';
 import { QueryClient, dehydrate } from 'react-query';
 import { useGetDataAuthorQuery, useGetPostByUserIdQuery } from '@/generated';
 import { graphQLClient } from '@/config/graphqlClient';

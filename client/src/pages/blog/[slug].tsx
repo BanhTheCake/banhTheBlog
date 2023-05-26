@@ -1,8 +1,5 @@
-import RelatedPosts from '@/components/blogs/RelatedPosts';
-import RelatedPostsFromAuthor from '@/components/blogs/RelatedPostsFromAuthor';
-import CategoriesSidebar from '@/components/categories/CategoriesSidebar';
-import Button from '@/components/global/Button';
-import DisplayHtml from '@/components/global/TextEditor/DisplayHtml';
+import RelatedPosts from '@/components_v2/blog/Related';
+import RelatedPostsFromAuthor from '@/components_v2/blog/RelatedFromAuthor';
 import { graphQLClient } from '@/config/graphqlClient';
 import {
     useAllCategoriesQuery,
@@ -21,10 +18,13 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { IoOptionsOutline } from 'react-icons/io5';
 import { QueryClient, dehydrate } from 'react-query';
 import { LIMIT } from '..';
-import OptionsHandlePost from '@/components/blogs/OptionsHandlePost';
 import Link from 'next/link';
 import useLike from '@/lib/Hooks/useLike';
 import cn from '@/lib/Utils/cn';
+import Button from '@/components_v2/global/Button';
+import DisplayHtml from '@/components_v2/global/TextEditor/DisplayHtml';
+import Category from '@/components_v2/category';
+import Blog from '@/components_v2/blog';
 
 const PostDetails = () => {
     const router = useRouter();
@@ -112,7 +112,7 @@ const PostDetails = () => {
                                         </Button>
                                         {isWitter && (
                                             <>
-                                                <OptionsHandlePost post={post}>
+                                                <Blog.OptionsHandle post={post}>
                                                     <Button
                                                         variant={'text'}
                                                         className="aspect-square ml-4"
@@ -121,7 +121,7 @@ const PostDetails = () => {
                                                             size={24}
                                                         />
                                                     </Button>
-                                                </OptionsHandlePost>
+                                                </Blog.OptionsHandle>
                                             </>
                                         )}
                                     </div>
@@ -152,7 +152,7 @@ const PostDetails = () => {
                         </div>
                         {categories && (
                             <div className="bg-white p-4 md:rounded-md border shadow-md">
-                                <RelatedPosts
+                                <Blog.Related
                                     categories={categories}
                                     currentId={post._id}
                                 />
@@ -160,11 +160,11 @@ const PostDetails = () => {
                         )}
                     </div>
                     <div className="hidden md:flex flex-col space-y-4">
-                        <RelatedPostsFromAuthor
+                        <Blog.RelatedFromAuthor
                             userId={post.user._id}
                             currentId={post._id}
                         />
-                        <CategoriesSidebar />
+                        <Category.Sidebar />
                     </div>
                 </div>
             )}

@@ -1,6 +1,3 @@
-import Button from '@/components/global/Button';
-import Input from '@/components/global/Input';
-import ModalForgot from '@/components/login/ModalForgot';
 import { graphQLClient } from '@/config/graphqlClient';
 import { useLoginMutation } from '@/generated';
 import { setAccessToken } from '@/lib/States/accessToken.state';
@@ -15,6 +12,9 @@ import { toast } from 'react-hot-toast';
 import { DiAtom } from 'react-icons/di';
 import { GrClose } from 'react-icons/gr';
 import { useQueryClient } from 'react-query';
+import Input from '@/components_v2/global/Input';
+import Button from '@/components_v2/global/Button';
+import Login from '@/components_v2/login';
 
 const LoginPage = ({}) => {
     const { mutate: handleLogin, isLoading } = useLoginMutation(graphQLClient);
@@ -136,7 +136,7 @@ const LoginPage = ({}) => {
                     </Link>
                 </div>
             </div>
-            <ModalForgot isOpen={openModal} onClose={onCloseModal} />
+            <Login.ModalForgot isOpen={openModal} onClose={onCloseModal} />
         </div>
     );
 };

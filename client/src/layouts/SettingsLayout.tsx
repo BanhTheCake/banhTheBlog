@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import RootLayout from './RootLayout';
-import Settings from '@/components/Settings';
+import Settings from '@/components_v2/setting';
 
 interface SettingsLayoutProps {
     children: React.ReactElement;
