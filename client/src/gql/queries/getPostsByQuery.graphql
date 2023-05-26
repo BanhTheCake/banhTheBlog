@@ -1,0 +1,30 @@
+query getPostBySearch($limit: Int!, $page: Int!, $search: SearchDto!) {
+    postsBySearch(limit: $limit, page: $page, search: $search) {
+        limit
+        totalPage
+        currentPage
+        totalItem
+        hasNextPage
+        hasPrevPage
+        PostPagination {
+            _id
+            title
+            count
+            favoritesUser
+            subContent
+            img
+            slug
+            user {
+                _id
+                username
+                img
+            }
+            categories {
+                _id
+                label
+                slug
+            }
+            createdAt
+        }
+    }
+}

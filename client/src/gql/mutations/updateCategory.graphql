@@ -1,0 +1,8 @@
+mutation updateCategory($id: String!, $label: String!, $slug: String!) {
+    updateCategoryById(_id: $id, label: $label, slug: $slug) {
+        code
+        ok
+        error
+        msg
+    }
+}

@@ -1,0 +1,20 @@
+mutation createNewPost(
+    $title: String!
+    $content: String!
+    $img: String!
+    $categories: [String!]!
+    $slug: String!
+) {
+    createNewPost(
+        title: $title
+        content: $content
+        img: $img
+        categories: $categories
+        slug: $slug
+    ) {
+        code
+        ok
+        error
+        msg
+    }
+}

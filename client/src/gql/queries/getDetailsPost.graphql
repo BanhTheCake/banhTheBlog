@@ -1,0 +1,22 @@
+query getDetailsPost($slug: String!) {
+    postBySlug(slug: $slug) {
+        _id
+        title
+        slug
+        content
+        img
+        count
+        favoritesUser
+        createdAt
+        user {
+            _id
+            username
+            img
+        }
+        categories {
+            _id
+            label
+            slug
+        }
+    }
+}

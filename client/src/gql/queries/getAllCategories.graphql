@@ -1,0 +1,7 @@
+query allCategories {
+    categories {
+        _id
+        label
+        slug
+    }
+}

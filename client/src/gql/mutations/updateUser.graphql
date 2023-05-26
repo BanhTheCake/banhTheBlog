@@ -1,0 +1,8 @@
+mutation updateUser($img: String, $username: String) {
+    updateDataUser(img: $img, username: $username) {
+        code
+        ok
+        error
+        msg
+    }
+}

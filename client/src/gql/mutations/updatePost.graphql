@@ -1,0 +1,20 @@
+mutation updatePost(
+    $id: String!
+    $title: String
+    $content: String
+    $img: String
+    $categories: [String!]
+) {
+    updatePostById(
+        postId: $id
+        title: $title
+        content: $content
+        img: $img
+        categories: $categories
+    ) {
+        code
+        ok
+        error
+        msg
+    }
+}

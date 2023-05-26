@@ -1,0 +1,9 @@
+query getDataAuthor($userId: String!) {
+    getBaseUser(userId: $userId) {
+        _id
+        username
+        email
+        img
+        createdAt
+    }
+}

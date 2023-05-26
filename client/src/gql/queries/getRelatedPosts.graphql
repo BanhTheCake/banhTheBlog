@@ -1,0 +1,32 @@
+query getRelatedPosts(
+    $categories: [String!]
+    $limit: Int!
+    $currentId: String!
+    $userId: String
+) {
+    relatedPosts(
+        categories: $categories
+        limit: $limit
+        currentId: $currentId
+        userId: $userId
+    ) {
+        _id
+        title
+        count
+        favoritesUser
+        subContent
+        img
+        slug
+        user {
+            _id
+            username
+            img
+        }
+        categories {
+            _id
+            label
+            slug
+        }
+        createdAt
+    }
+}

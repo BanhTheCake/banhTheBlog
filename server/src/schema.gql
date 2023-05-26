@@ -1,0 +1,158 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type SafeUser {
+  _id: String!
+  username: String!
+  email: String!
+  img: String
+  firstLogin: Boolean!
+  role: Roles!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum Roles {
+  ADMIN
+  USER
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type BaseUser {
+  _id: String!
+  username: String!
+  email: String!
+  img: String
+  createdAt: DateTime!
+}
+
+type Post {
+  _id: String!
+  title: String!
+  slug: String!
+  content: String!
+  subContent: String!
+  img: String!
+  count: Int!
+  favoritesUser: [String!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: UserNoPassword!
+  categories: [Category!]!
+}
+
+type PostsPagination {
+  limit: Int!
+  totalPage: Int!
+  currentPage: Int!
+  totalItem: Int!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  PostPagination: [Post!]
+}
+
+type RegisterResponse implements Response {
+  code: Int!
+  ok: Boolean!
+  error: String
+  msg: String
+}
+
+interface Response {
+  code: Int!
+  ok: Boolean!
+  error: String
+  msg: String
+}
+
+type LoginResponse implements Response {
+  code: Int!
+  ok: Boolean!
+  error: String
+  msg: String
+  token: String
+}
+
+type CommonResponse implements Response {
+  code: Int!
+  ok: Boolean!
+  error: String
+  msg: String
+}
+
+type RefreshTokenResponse implements Response {
+  code: Int!
+  ok: Boolean!
+  error: String
+  msg: String
+  token: String
+}
+
+type Category {
+  _id: String!
+  label: String!
+  slug: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserNoPassword {
+  _id: String!
+  username: String!
+  email: String!
+  img: String
+  firstLogin: Boolean!
+  role: Roles!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  hello: String!
+  getBaseUser(userId: String!): BaseUser
+  getDataUser: SafeUser
+  getAllCreatedPost(limit: Int = 4, page: Int = 1): PostsPagination!
+  getAllFavoritePost(limit: Int = 4, page: Int = 1): PostsPagination!
+  refreshAccessToken: RefreshTokenResponse!
+  accessToken: String!
+  refreshToken: String!
+  postHello: String!
+  posts(limit: Int = 4, page: Int = 1): PostsPagination
+  post(id: String!): Post!
+  postBySlug(slug: String!): Post
+  postsByCategoryId(limit: Int = 4, page: Int = 1, categoryId: String!): PostsPagination
+  postsBySearch(limit: Int = 4, page: Int = 1, search: SearchDto!): PostsPagination
+  postsByUserId(limit: Int = 4, page: Int = 1, userId: String!): PostsPagination
+  relatedPosts(limit: Int = 4, page: Int = 1, categories: [String!], userId: String, currentId: String!): [Post!]!
+  categoryHello: String!
+  category(id: String!): Category
+  categories: [Category!]!
+}
+
+input SearchDto {
+  categorySlug: String
+  query: String
+}
+
+type Mutation {
+  register(username: String!, email: String!, password: String!): RegisterResponse!
+  activeAccount(token: String!, email: String!): CommonResponse!
+  forgotPassword(email: String!): CommonResponse!
+  changePassword(password: String!): CommonResponse!
+  login(email: String!, password: String!): LoginResponse!
+  logout(id: String!): CommonResponse!
+  updateDataUser(img: String, username: String): CommonResponse!
+  updatePassword(newPassword: String!, password: String!): CommonResponse!
+  createNewPost(title: String!, slug: String!, content: String!, img: String!, categories: [String!]!): CommonResponse!
+  updatePostById(postId: String!, title: String, slug: String, content: String, img: String, categories: [String!]): CommonResponse!
+  updateFavoriteUserPost(id: String!): CommonResponse!
+  deletePostById(id: String!): CommonResponse!
+  createCategory(label: String!, slug: String!): CommonResponse!
+  updateCategoryById(_id: String!, label: String!, slug: String!): CommonResponse!
+  deleteCategoryById(_id: String!): CommonResponse!
+}

@@ -1,0 +1,8 @@
+mutation likePost($postId: String!) {
+    updateFavoriteUserPost(id: $postId) {
+        code
+        ok
+        error
+        msg
+    }
+}

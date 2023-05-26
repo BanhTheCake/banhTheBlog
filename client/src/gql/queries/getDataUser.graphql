@@ -1,0 +1,11 @@
+query getDataUser {
+    getDataUser {
+        _id
+        username
+        email
+        img
+        firstLogin
+        role
+        createdAt
+    }
+}

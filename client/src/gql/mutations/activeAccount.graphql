@@ -1,0 +1,8 @@
+mutation activeAccount($token: String!, $email: String!) {
+    activeAccount(token: $token, email: $email) {
+        code
+        ok
+        error
+        msg
+    }
+}

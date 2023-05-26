@@ -1,0 +1,13 @@
+query getPostBySlugToUpdate($slug: String!) {
+    postBySlug(slug: $slug) {
+        _id
+        title
+        content
+        img
+        categories {
+            _id
+            label
+            slug
+        }
+    }
+}

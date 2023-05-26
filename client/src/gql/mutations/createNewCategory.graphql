@@ -1,0 +1,8 @@
+mutation createNewCategory($label: String!, $slug: String!) {
+    createCategory(label: $label, slug: $slug) {
+        code
+        ok
+        error
+        msg
+    }
+}

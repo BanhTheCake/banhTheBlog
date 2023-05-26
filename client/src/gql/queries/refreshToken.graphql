@@ -1,0 +1,9 @@
+query refreshToken {
+    refreshAccessToken {
+        code
+        ok
+        error
+        msg
+        token
+    }
+}

@@ -1,0 +1,30 @@
+query getFavoritesPosts($limit: Int!, $page: Int!) {
+    getAllFavoritePost(limit: $limit, page: $page) {
+        limit
+        totalPage
+        currentPage
+        totalItem
+        hasNextPage
+        hasPrevPage
+        PostPagination {
+            _id
+            title
+            count
+            favoritesUser
+            subContent
+            img
+            slug
+            user {
+                _id
+                username
+                img
+            }
+            categories {
+                _id
+                label
+                slug
+            }
+            createdAt
+        }
+    }
+}
