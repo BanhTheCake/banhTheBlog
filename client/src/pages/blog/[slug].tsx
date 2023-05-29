@@ -99,7 +99,7 @@ const PostDetails = () => {
                                     fill
                                     className="object-cover md:rounded-t-md"
                                     placeholder="blur"
-                                    blurDataURL="/images/placeholder.webp"
+                                    blurDataURL="/static/images/placeholder.png"
                                 />
                             </div>
                             <div className="p-4 flex flex-col space-y-2">

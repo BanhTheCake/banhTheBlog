@@ -79,7 +79,7 @@ const Avatar = ({ className, author, isOwner }: AvatarProps) => {
                 sizes="60vw"
                 className="object-cover"
                 placeholder="blur"
-                blurDataURL="/images/placeholder.webp"
+                blurDataURL="/static/images/placeholder.png"
             />
             {isOwner && (
                 <>

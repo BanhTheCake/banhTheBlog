@@ -59,7 +59,7 @@ const AuthState: FC<AuthStateProps> = ({}) => {
                                 className="object-cover"
                                 sizes="60vw"
                                 placeholder="blur"
-                                blurDataURL="/images/placeholder.webp"
+                                blurDataURL="/static/images/placeholder.png"
                             />
                         </div>
                     </DropdownNavbar>

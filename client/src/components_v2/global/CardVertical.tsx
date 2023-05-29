@@ -45,7 +45,7 @@ const CardVertical: FC<CardVerticalProps> = ({ data, className, children }) => {
                         className="object-cover"
                         sizes="60vw"
                         placeholder="blur"
-                        blurDataURL="/images/placeholder.webp"
+                        blurDataURL="/static/images/placeholder.png"
                     />
                 </Link>
                 <div className="flex flex-col">

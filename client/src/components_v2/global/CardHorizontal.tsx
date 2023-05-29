@@ -32,7 +32,7 @@ const CardHorizontal: FC<CardHorizontalProps> = ({
                     fill
                     className="object-cover object-center rounded-sm"
                     placeholder="blur"
-                    blurDataURL="/images/placeholder.webp"
+                    blurDataURL="/static/images/placeholder.png"
                 />
             </Link>
             <div className="flex-1 flex flex-col space-y-3">
