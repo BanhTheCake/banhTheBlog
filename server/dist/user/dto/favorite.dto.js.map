@@ -1,1 +1,0 @@
-{"version":3,"file":"favorite.dto.js","sourceRoot":"","sources":["../../../src/user/dto/favorite.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAAkD;AAClD,qDAAwD;AAGjD,IAAM,eAAe,GAArB,MAAM,eAAe;CAK3B,CAAA;AAJC;IAAC,IAAA,eAAK,EAAC,GAAG,EAAE,CAAC,MAAM,CAAC;IACnB,IAAA,4BAAU,GAAE;IACZ,IAAA,2BAAS,GAAE;;2CACD;AAJA,eAAe;IAD3B,IAAA,kBAAQ,GAAE;GACE,eAAe,CAK3B;AALY,0CAAe"}

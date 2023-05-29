@@ -1,1 +1,0 @@
-{"version":3,"file":"decorateSocket.js","sourceRoot":"","sources":["../../src/config/decorateSocket.ts"],"names":[],"mappings":";;AACA,mDAAsD;AAGtD,SAAS,eAAe,CAAC,MAAM,EAAE,MAAqB;IAGpD,IAAA,6BAAgB,EAAC;QACf,IAAI,EAAE;YACJ,MAAM,EAAE,MAAM,CAAC,GAAG,CAAS,YAAY,CAAC;YACxC,WAAW,EAAE,IAAI;SAClB;KACF,CAAC,CAAC,MAAM,CAAC,CAAC;AACb,CAAC;AAED,kBAAe,eAAe,CAAC"}
