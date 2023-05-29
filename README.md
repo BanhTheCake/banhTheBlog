@@ -1,12 +1,8 @@
 ## Introduction
 
----
-
 HappyTato is a website that provides quality blogs, allowing you to create and manage blog with Admin permission. built using [Next.js](https://nextjs.org/) for the frontend and [Nest.js](https://nestjs.com/) with [GraphQL](https://graphql.org/) for the backend
 
 ## Tech Stack
-
----
 
 -   [Next.js](https://nextjs.org/) – framework
 -   [Typescript](https://www.typescriptlang.org/) – language
@@ -19,8 +15,6 @@ HappyTato is a website that provides quality blogs, allowing you to create and m
 
 ## Features
 
----
-
 -   Pagination - Search by keyword
 -   Like post - use with socket for realtime
 -   Send email for active account or reset password
@@ -31,8 +25,6 @@ HappyTato is a website that provides quality blogs, allowing you to create and m
 -   Store image on [Uploadthing](https://uploadthing.com/)
 
 ## ScreenShots
-
----
 
 -   Home page
 
