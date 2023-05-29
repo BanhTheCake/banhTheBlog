@@ -29,8 +29,11 @@ const CardMain: FC<CardMainProps> = ({ data }) => {
             <Image
                 src={data.img}
                 alt={data.title}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 60vw"
                 fill
                 className="object-cover object-center rounded-sm"
+                placeholder="blur"
+                blurDataURL="/images/placeholder.webp"
             />
             <div className="absolute bottom-0 right-0 left-0 h-[100%] md:h-[70%] bg-gradient-to-b from-transparent  to-black/60 to-100% rounded-sm" />
             <div className="absolute bottom-0 left-0 right-0 flex flex-col space-y-3 p-6">

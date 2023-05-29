@@ -88,8 +88,11 @@ const PostDetails = () => {
                                 <Image
                                     src={post.img}
                                     alt={post.title}
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 60vw"
                                     fill
                                     className="object-cover md:rounded-t-md"
+                                    placeholder="blur"
+                                    blurDataURL="/images/placeholder.webp"
                                 />
                             </div>
                             <div className="p-4 flex flex-col space-y-2">

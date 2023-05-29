@@ -28,8 +28,11 @@ const CardHorizontal: FC<CardHorizontalProps> = ({
                 <Image
                     src={data.img}
                     alt={data.title}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     fill
                     className="object-cover object-center rounded-sm"
+                    placeholder="blur"
+                    blurDataURL="/images/placeholder.webp"
                 />
             </Link>
             <div className="flex-1 flex flex-col space-y-3">
