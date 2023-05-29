@@ -1,6 +1,4 @@
 import {
-  MessageBody,
-  SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
   OnGatewayConnection,
@@ -9,12 +7,7 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
-@WebSocketGateway(8080, {
-  cors: {
-    origin: 'http://localhost:3000',
-    credentials: true,
-  },
-})
+@WebSocketGateway()
 export class SocketGateway
   implements OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit
 {
@@ -26,10 +19,10 @@ export class SocketGateway
   }
 
   handleConnection(client: Socket) {
-    // console.log('Connections: ', client.handshake.headers.cookie);
+    console.log('Connections: ', client.id);
   }
 
   handleDisconnect(client: Socket) {
-    // console.log('Disconnections: ', client.id);
+    console.log('Disconnections: ', client.id);
   }
 }

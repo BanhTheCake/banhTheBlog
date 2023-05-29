@@ -17,8 +17,10 @@ let SocketGateway = class SocketGateway {
         console.log('Gateway init');
     }
     handleConnection(client) {
+        console.log('Connections: ', client.id);
     }
     handleDisconnect(client) {
+        console.log('Disconnections: ', client.id);
     }
 };
 __decorate([
@@ -26,12 +28,7 @@ __decorate([
     __metadata("design:type", socket_io_1.Server)
 ], SocketGateway.prototype, "server", void 0);
 SocketGateway = __decorate([
-    (0, websockets_1.WebSocketGateway)(8080, {
-        cors: {
-            origin: 'http://localhost:3000',
-            credentials: true,
-        },
-    })
+    (0, websockets_1.WebSocketGateway)()
 ], SocketGateway);
 exports.SocketGateway = SocketGateway;
 //# sourceMappingURL=socket.gateway.js.map

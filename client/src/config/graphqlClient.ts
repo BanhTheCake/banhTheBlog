@@ -4,14 +4,12 @@ import { RequestMiddleware } from 'graphql-request/dist/types';
 import jwt_decode from 'jwt-decode';
 import { AccessToken } from '@/lib/Types/Token';
 import refreshToken from '@/lib/Utils/refreshToken';
+import ENV from './VarEnv';
 
-export const graphQLClient = new GraphQLClient(
-    'http://localhost:3003/graphql',
-    {
-        credentials: 'include',
-        fetch: fetch,
-    }
-);
+export const graphQLClient = new GraphQLClient(ENV.graphQL, {
+    credentials: 'include',
+    fetch: fetch,
+});
 
 const requestMiddleware: RequestMiddleware = async (request) => {
     let token = getAccessToken();
@@ -29,10 +27,7 @@ const requestMiddleware: RequestMiddleware = async (request) => {
     };
 };
 
-export const graphQLClientPrivate = new GraphQLClient(
-    'http://localhost:3003/graphql',
-    {
-        credentials: 'include',
-        requestMiddleware,
-    }
-);
+export const graphQLClientPrivate = new GraphQLClient(ENV.graphQL, {
+    credentials: 'include',
+    requestMiddleware,
+});
