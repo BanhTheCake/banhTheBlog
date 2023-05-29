@@ -13,6 +13,7 @@ import { IoOptionsOutline } from 'react-icons/io5';
 import CardVertical from '@/components_v2/global/CardVertical';
 import { useQueryClient } from 'react-query';
 import HeadTitle from '@/components_v2/global/HeadTitle';
+import Skeletons from '@/components_v2/global/Skeletons';
 
 const FavoritesBlogs = () => {
     const { graphQLClient, isReady } = usePrivateGraphClient();
@@ -51,8 +52,27 @@ const FavoritesBlogs = () => {
         });
     };
 
-    if (isLoading) return <div>Loading...</div>;
-
+    if (isLoading)
+        return (
+            <div className="flex flex-1 flex-col space-y-3 bg-gray-200/40 p-4">
+                <div className="bg-white shadow-sm rounded-md">
+                    <h2 className="p-4 font-semibold text-3xl border-b">
+                        Your favorites posts
+                    </h2>
+                    <Skeletons.CardVertical className="border-none" />
+                </div>
+                {Array(2)
+                    .fill(0)
+                    .map((item, index) => {
+                        return (
+                            <Skeletons.CardVertical
+                                key={index}
+                                className="bg-white shadow-sm"
+                            />
+                        );
+                    })}
+            </div>
+        );
     return (
         <>
             <HeadTitle
