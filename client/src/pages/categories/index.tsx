@@ -9,6 +9,7 @@ import { QueryClient, dehydrate } from 'react-query';
 import { LIMIT } from '..';
 import Button from '@/components_v2/global/Button';
 import Category from '@/components_v2/category';
+import HeadTitle from '@/components_v2/global/HeadTitle';
 
 const CategoryPage = () => {
     const router = useRouter();
@@ -47,6 +48,12 @@ const CategoryPage = () => {
 
     return (
         <div className="w-full flex flex-col space-y-6">
+            <HeadTitle
+                title={`${title || 'All'} | Categories`}
+                content={`Sort all blogs by ${title || 'tato'}`}
+                name="categories"
+                keyData={`categories-${title || 'all'}`}
+            />
             <div className="py-4 flex flex-col justify-center items-center space-y-3">
                 <h2 className="text-4xl font-semibold text-center">
                     HapyTato Blog {title && ` - ${title}`}

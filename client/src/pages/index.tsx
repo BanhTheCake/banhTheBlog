@@ -6,12 +6,18 @@ import { useGetPostsQuery } from '@/generated';
 import { graphQLClient } from '@/config/graphqlClient';
 import { ReactElement } from 'react';
 import Home from '@/components_v2/home';
+import HeadTitle from '@/components_v2/global/HeadTitle';
 
 export const LIMIT = 7;
-
 export default function HomePage() {
     return (
         <>
+            <HeadTitle
+                title="Happy Tato | Home page"
+                content="Happy Tato. The blog writings from out team, the latest industry news, interviews, technologies and resources."
+                keyData="homepage"
+                name="homepage"
+            />
             <div className={cn('w-full flex flex-col space-y-4')}>
                 <div
                     className={cn(

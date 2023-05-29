@@ -5,6 +5,7 @@ import Footer from '@/components_v2/footer';
 import { cva, type VariantProps } from 'class-variance-authority';
 import SocketProvider from '@/lib/Context/SocketContext';
 import Navbar from '@/components_v2/navbar';
+import HeadTitle from '@/components_v2/global/HeadTitle';
 
 const poppins = Poppins({
     subsets: ['latin'],

@@ -1,8 +1,8 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useRouter } from 'next/router';
-import { GetDataUserQuery, useGetDataUserQuery } from '@/generated';
+import { useGetDataUserQuery } from '@/generated';
 import { graphQLClient } from '@/config/graphqlClient';
-import { getDataUser, setDataUser, useDataUser } from '@/lib/States/user.state';
+import { setDataUser, useDataUser } from '@/lib/States/user.state';
 import { getAccessToken } from '@/lib/States/accessToken.state';
 import Image from 'next/image';
 import useRefreshToken from '@/lib/Hooks/useRefreshToken';
@@ -11,7 +11,6 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import MenuMobile from './MenuMobile';
 import { User } from '@/lib/Types/User';
 import { setAuthState } from '@/lib/States/Auth.state';
-import socket from '@/config/socket';
 import Button from '@/components_v2/global/Button';
 
 interface AuthStateProps {}

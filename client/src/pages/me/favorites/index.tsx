@@ -12,6 +12,7 @@ import { ReactElement } from 'react';
 import { IoOptionsOutline } from 'react-icons/io5';
 import CardVertical from '@/components_v2/global/CardVertical';
 import { useQueryClient } from 'react-query';
+import HeadTitle from '@/components_v2/global/HeadTitle';
 
 const FavoritesBlogs = () => {
     const { graphQLClient, isReady } = usePrivateGraphClient();
@@ -54,6 +55,12 @@ const FavoritesBlogs = () => {
 
     return (
         <>
+            <HeadTitle
+                title="Favorites blogs"
+                content="Your favorites blogs"
+                keyData="favorites"
+                name="favorites"
+            />
             <div className="flex flex-1 flex-col space-y-3 bg-gray-200/40 p-4">
                 <div className="bg-white shadow-sm rounded-md">
                     <h2 className="p-4 font-semibold text-3xl border-b">

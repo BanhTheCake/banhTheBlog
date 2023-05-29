@@ -24,6 +24,7 @@ import DisplayHtml from '@/components_v2/global/TextEditor/DisplayHtml';
 import Category from '@/components_v2/category';
 import Blog from '@/components_v2/blog';
 import { useHistory } from '@/lib/Context/History';
+import HeadTitle from '@/components_v2/global/HeadTitle';
 
 const PostDetails = () => {
     const router = useRouter();
@@ -80,6 +81,12 @@ const PostDetails = () => {
 
     return (
         <>
+            <HeadTitle
+                title={post?.title}
+                content={post?.slug}
+                keyData={post?.slug}
+                name={post?.slug}
+            />
             {post && (
                 <div className="md:p-4 !pb-8 bg-gray-200/30 flex md:space-x-4">
                     <div className="flex flex-1 flex-col space-y-4">
