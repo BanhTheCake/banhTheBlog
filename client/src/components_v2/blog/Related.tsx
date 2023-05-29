@@ -4,7 +4,7 @@ import { LIMIT } from '@/pages';
 import { FC } from 'react';
 import { GiTomato } from 'react-icons/gi';
 import Link from 'next/link';
-import CardHorizontal from '@/components_v2/global/CardHorizontal';
+import CardVertical from '../global/CardVertical';
 
 interface RelatedPostsProps {
     categories: string[];
@@ -47,9 +47,7 @@ const RelatedPosts: FC<RelatedPostsProps> = ({ categories, currentId }) => {
                     </h4>
                     <div className="flex flex-col space-y-4">
                         {posts.map((post) => {
-                            return (
-                                <CardHorizontal key={post._id} data={post} />
-                            );
+                            return <CardVertical key={post._id} data={post} />;
                         })}
                     </div>
                 </>

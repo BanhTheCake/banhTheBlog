@@ -35,7 +35,7 @@ const DeleteBtnWrapper = React.forwardRef<unknown, DeleteBtnWrapperProps>(
                             return;
                         }
                         toast.success('Delete post success');
-                        onCallback && onCallback();
+                        onCallback?.();
                     },
                     onError(error) {
                         if (isGraphQLError(error)) {

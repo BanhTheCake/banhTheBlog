@@ -9,6 +9,7 @@ import { useQueryClient } from 'react-query';
 import isEqual from 'lodash.isequal';
 import { useSocketContext } from '../Context/SocketContext';
 import { I_Socket_Like, LIKE_ENUM } from '../Types/Socket';
+import { useRouter } from 'next/router';
 
 enum EActions {
     SET_VALUES = 'SET_VALUES',
@@ -70,6 +71,7 @@ const useLike = (value: Partial<Omit<IState, 'like'>>) => {
     const { graphQLClient } = usePrivateGraphClient();
     const queryClient = useQueryClient();
     const socket = useSocketContext();
+    const router = useRouter();
 
     const generateValue = useCallback(
         (value: IState): IState => {
@@ -107,7 +109,14 @@ const useLike = (value: Partial<Omit<IState, 'like'>>) => {
     );
 
     const onLike = useCallback(() => {
-        if (!user || !state.postId) return;
+        if (!user) {
+            router.push('/login');
+            return;
+        }
+        if (!state.postId) {
+            toast.error('Please try again.');
+            return;
+        }
         dispatch({ type: EActions.LIKE });
         update(
             { postId: state.postId },
@@ -146,16 +155,18 @@ const useLike = (value: Partial<Omit<IState, 'like'>>) => {
                 },
             }
         );
-    }, [prevCount, prevLike, queryClient, state.postId, update, user]);
+    }, [prevCount, prevLike, queryClient, state.postId, update, user, router]);
 
     useEffect(() => {
         if (!user?._id) return;
+        // Re-calc user is like or not
         setInitValue(state);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user?._id]);
 
     useEffect(() => {
         if (!value || isEqual(value, prevValue)) return;
+        // Re-calc user is like or not
         setInitValue({ ...initValue, ...value });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);

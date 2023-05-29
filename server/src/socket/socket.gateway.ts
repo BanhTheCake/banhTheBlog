@@ -30,11 +30,6 @@ export class SocketGateway
   }
 
   handleDisconnect(client: Socket) {
-    console.log('Disconnections: ', client.id);
-  }
-
-  @SubscribeMessage('testSocket')
-  findAll(@MessageBody() data: any): any {
-    console.log('Socket workkk !: ', data);
+    // console.log('Disconnections: ', client.id);
   }
 }

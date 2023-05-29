@@ -7,24 +7,19 @@ import {
     DropdownSeparator,
 } from '@/components_v2/global/Dropdown';
 import { IPost, IPostDetails } from '@/lib/Types/Post';
-import { useHistory } from '@/lib/Context/History';
-import { useQueryClient } from 'react-query';
 import DeleteBtnWrapper from '@/components_v2/global/DeleteBtnWrapper';
 
 interface OptionsHandlePostProps {
     children: React.ReactNode;
     post: IPostDetails | IPost;
+    onSuccessDelete: (...args: any[]) => any;
 }
 
-const OptionsHandlePost = ({ children, post }: OptionsHandlePostProps) => {
-    const { back } = useHistory();
-    const queryClient = useQueryClient();
-
-    const onCallBack = () => {
-        back();
-        Promise.all([queryClient.invalidateQueries('getMyPosts')]);
-    };
-
+const OptionsHandlePost = ({
+    children,
+    post,
+    onSuccessDelete,
+}: OptionsHandlePostProps) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
@@ -34,7 +29,10 @@ const OptionsHandlePost = ({ children, post }: OptionsHandlePostProps) => {
                 </DropdownItem>
                 <DropdownSeparator />
                 <DropdownItem asChild>
-                    <DeleteBtnWrapper postId={post._id} onCallback={onCallBack}>
+                    <DeleteBtnWrapper
+                        postId={post._id}
+                        onCallback={onSuccessDelete}
+                    >
                         <p>Delete</p>
                     </DeleteBtnWrapper>
                 </DropdownItem>

@@ -10,6 +10,7 @@
     outline: none;
     padding: 6px;
     min-height: 400px;
+    font-size: 1.2rem;
 }
 
 .ProseMirror > * + * {
@@ -18,9 +19,9 @@
 
 .ProseMirror img {
     border-radius: 10px;
-    aspect-ratio: 16/9;
+    height: auto;
     margin: 1.5em auto;
-    width: 90%;
+    width: auto;
 }
 
 .ProseMirror a {
@@ -37,11 +38,11 @@
 }
 
 .ProseMirror h1 {
-    font-size: 34px;
+    font-size: 2rem;
 }
 
 .ProseMirror h2 {
-    font-size: 24px;
+    font-size: 1.6rem;
 }
 
 .ProseMirror pre {
@@ -55,7 +56,7 @@
 .ProseMirror code {
     background: none;
     color: inherit;
-    font-size: 0.8rem;
+    font-size: 1rem;
     padding: 0;
     padding: 2px 4px;
     width: fit-content;
@@ -120,12 +121,7 @@
     color: inherit;
     padding: 0;
     background: none;
-    font-size: 0.8rem;
-}
-
-.ProseMirror img {
-    max-width: 100%;
-    height: auto;
+    font-size: 1rem;
 }
 
 .ProseMirror blockquote {

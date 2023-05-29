@@ -1,6 +1,5 @@
 import OptionsHandlePost from '@/components_v2/blog/OptionsHandle';
 import Button from '@/components_v2/global/Button';
-import CardHorizontal from '@/components_v2/global/CardHorizontal';
 import Pagination from '@/components_v2/global/Pagination';
 import { useGetFavoritesPostsQuery } from '@/generated';
 import RootLayout from '@/layouts/RootLayout';
@@ -9,13 +8,16 @@ import { useDataUser } from '@/lib/States/user.state';
 import { LIMIT } from '@/pages';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { ReactElement, useEffect } from 'react';
+import { ReactElement } from 'react';
 import { IoOptionsOutline } from 'react-icons/io5';
+import CardVertical from '@/components_v2/global/CardVertical';
+import { useQueryClient } from 'react-query';
 
 const FavoritesBlogs = () => {
     const { graphQLClient, isReady } = usePrivateGraphClient();
     const router = useRouter();
     const [user] = useDataUser();
+    const queryClient = useQueryClient();
 
     let page = 1;
     if (router.query?.page && typeof router.query.page === 'string') {
@@ -36,7 +38,17 @@ const FavoritesBlogs = () => {
     const posts = postsRes?.getAllFavoritePost.PostPagination;
     const totalPage = postsRes?.getAllFavoritePost.totalPage;
 
-    console.log('-----: ', posts);
+    const onSuccessDelete = () => {
+        queryClient.invalidateQueries({
+            predicate(query) {
+                const queryKey = query.queryKey[0];
+                if (typeof queryKey === 'string') {
+                    return queryKey.toLowerCase().includes('post');
+                }
+                return false;
+            },
+        });
+    };
 
     if (isLoading) return <div>Loading...</div>;
 
@@ -49,12 +61,15 @@ const FavoritesBlogs = () => {
                     </h2>
                     {posts?.[0] ? (
                         <>
-                            <CardHorizontal
+                            <CardVertical
                                 data={posts[0]}
                                 className="border-none "
                             >
                                 {user?._id && user._id === posts[0].user._id ? (
-                                    <OptionsHandlePost post={posts[0]}>
+                                    <OptionsHandlePost
+                                        post={posts[0]}
+                                        onSuccessDelete={onSuccessDelete}
+                                    >
                                         <Button
                                             variant={'text'}
                                             className="aspect-square ml-4"
@@ -63,7 +78,7 @@ const FavoritesBlogs = () => {
                                         </Button>
                                     </OptionsHandlePost>
                                 ) : undefined}
-                            </CardHorizontal>
+                            </CardVertical>
                         </>
                     ) : (
                         <p className="p-4 py-6 text-center text-xl font-medium text-black/70">
@@ -76,13 +91,16 @@ const FavoritesBlogs = () => {
                     posts.slice(1).map((item) => {
                         const isOwner = user?._id && user._id === item.user._id;
                         return (
-                            <CardHorizontal
+                            <CardVertical
                                 key={item._id}
                                 data={item}
                                 className="bg-white shadow-sm"
                             >
                                 {isOwner ? (
-                                    <OptionsHandlePost post={item}>
+                                    <OptionsHandlePost
+                                        post={item}
+                                        onSuccessDelete={onSuccessDelete}
+                                    >
                                         <Button
                                             variant={'text'}
                                             className="aspect-square ml-4"
@@ -91,14 +109,14 @@ const FavoritesBlogs = () => {
                                         </Button>
                                     </OptionsHandlePost>
                                 ) : undefined}
-                            </CardHorizontal>
+                            </CardVertical>
                         );
                     })}
-                {totalPage && (
+                {totalPage ? (
                     <div className="p-4 rounded-md bg-white shadow-sm">
                         <Pagination displayPage={3} totalPage={totalPage} />
                     </div>
-                )}
+                ) : null}
             </div>
         </>
     );

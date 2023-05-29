@@ -1,10 +1,10 @@
-import CardHorizontal from '@/components_v2/global/CardHorizontal';
 import Pagination from '@/components_v2/global/Pagination';
 import { graphQLClient } from '@/config/graphqlClient';
 import { useGetPostBySearchQuery } from '@/generated';
 import { LIMIT } from '@/pages';
 import { useRouter } from 'next/router';
 import { FC, useMemo } from 'react';
+import CardVertical from '../global/CardVertical';
 
 interface ContentsProps {}
 
@@ -46,7 +46,7 @@ const Contents: FC<ContentsProps> = ({}) => {
     return (
         <>
             {posts.map((post) => {
-                return <CardHorizontal key={post.createdAt} data={post} />;
+                return <CardVertical key={post.createdAt} data={post} />;
             })}
             {totalPage && <Pagination totalPage={totalPage} displayPage={3} />}
         </>

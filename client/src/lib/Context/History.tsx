@@ -11,7 +11,7 @@ import React, {
 interface HValidation {
     history: string[];
     setHistory(data: string[]): void;
-    back(fallback?: string): void;
+    back(fallback?: string): Promise<void>;
 }
 
 const HistoryContext = createContext<HValidation>({} as HValidation);
@@ -25,18 +25,18 @@ export const HistoryProvider = ({
     const [history, setHistory] = useState<string[]>([]);
 
     const back = useCallback(
-        (fallbackRoute: string = '/') => {
+        async (fallbackRoute: string = '/') => {
             for (let i = history.length - 2; i >= 0; i--) {
                 const route = history[i];
                 if (!route.includes('#') && route !== pathname) {
-                    replace(route);
+                    await replace(route);
                     const newHistory = history.slice(0, i);
                     setHistory(newHistory);
                     return;
                 }
             }
             if (fallbackRoute) {
-                replace(fallbackRoute);
+                await replace(fallbackRoute);
             }
         },
         [history, pathname, replace]

@@ -5,5 +5,4 @@ export declare class SocketGateway implements OnGatewayConnection, OnGatewayDisc
     afterInit(): void;
     handleConnection(client: Socket): void;
     handleDisconnect(client: Socket): void;
-    findAll(data: any): any;
 }

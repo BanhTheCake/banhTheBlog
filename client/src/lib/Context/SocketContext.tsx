@@ -10,15 +10,11 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     const [user] = useDataUser();
 
     useEffect(() => {
-        if (!user?._id) {
-            socket.connected && socket.disconnect();
-            return;
-        }
         socket.connect();
         return () => {
             socket.disconnect();
         };
-    }, [user?._id]);
+    }, []);
 
     return (
         <SocketContext.Provider value={socket}>

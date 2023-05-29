@@ -1,9 +1,5 @@
 import { graphQLClient } from '@/config/graphqlClient';
-import {
-    useAllCategoriesQuery,
-    useGetPostBySearchQuery,
-    useGetPostsQuery,
-} from '@/generated';
+import { useAllCategoriesQuery, useGetPostBySearchQuery } from '@/generated';
 import RootLayout from '@/layouts/RootLayout';
 import isGraphQLError from '@/lib/Guards/isGraphqlError';
 import { GetServerSideProps } from 'next';

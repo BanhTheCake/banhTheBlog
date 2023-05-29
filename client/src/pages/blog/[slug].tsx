@@ -1,5 +1,3 @@
-import RelatedPosts from '@/components_v2/blog/Related';
-import RelatedPostsFromAuthor from '@/components_v2/blog/RelatedFromAuthor';
 import { graphQLClient } from '@/config/graphqlClient';
 import {
     useAllCategoriesQuery,
@@ -16,7 +14,7 @@ import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { IoOptionsOutline } from 'react-icons/io5';
-import { QueryClient, dehydrate } from 'react-query';
+import { QueryClient, dehydrate, useQueryClient } from 'react-query';
 import { LIMIT } from '..';
 import Link from 'next/link';
 import useLike from '@/lib/Hooks/useLike';
@@ -25,11 +23,14 @@ import Button from '@/components_v2/global/Button';
 import DisplayHtml from '@/components_v2/global/TextEditor/DisplayHtml';
 import Category from '@/components_v2/category';
 import Blog from '@/components_v2/blog';
+import { useHistory } from '@/lib/Context/History';
 
 const PostDetails = () => {
     const router = useRouter();
     const slug = router.query?.slug || '';
     const [user] = useDataUser();
+    const { back } = useHistory();
+    const queryClient = useQueryClient();
 
     const { like, onLike, setInitValue } = useLike({});
 
@@ -59,6 +60,19 @@ const PostDetails = () => {
             return [...rs, item['_id']];
         }, [] as string[]);
     }, [post]);
+
+    const onSuccessDelete = async () => {
+        await back();
+        queryClient.invalidateQueries({
+            predicate(query) {
+                const queryKey = query.queryKey[0];
+                if (typeof queryKey === 'string') {
+                    return queryKey.toLowerCase().includes('post');
+                }
+                return false;
+            },
+        });
+    };
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -112,7 +126,12 @@ const PostDetails = () => {
                                         </Button>
                                         {isWitter && (
                                             <>
-                                                <Blog.OptionsHandle post={post}>
+                                                <Blog.OptionsHandle
+                                                    post={post}
+                                                    onSuccessDelete={
+                                                        onSuccessDelete
+                                                    }
+                                                >
                                                     <Button
                                                         variant={'text'}
                                                         className="aspect-square ml-4"
